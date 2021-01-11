@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <FlipView x:Name="FlipViewControl" Background="Transparent">
             <StackPanel Orientation="Vertical">
-                <Image Height="200" Margin="0,-16,0,0" Source="/Assets/PowerMute.png"/>
+                <Image Height="200" Margin="0,-16,0,0" Source="/Assets/NewFeature.png"/>
                 <TextBlock Margin="32,32,32,0" TextWrapping="Wrap" Opacity="0.8" FontWeight="SemiBold" Text="What's new in 0.22?"/>
-                <TextBlock Text="Introducing PowerMute" FontWeight="SemiBold" FontSize="32" Margin="32,0,32,16"/>
-                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="PowerMute is a new module that allows you to stay productive during calls. Easily (un)mute your camera or microphone when multitasking." />
+                <TextBlock Text="Introducing new feature" FontWeight="SemiBold" FontSize="32" Margin="32,0,32,16"/>
+                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="This feature is a new module that allows you to stay productive. It's super powerful and a delight to use." />
             </StackPanel>
         </FlipView>
 

@@ -119,8 +119,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OOBE.xaml.cs">
-      <DependentUpon>OOBE.xaml</DependentUpon>
+    <Compile Include="ListViewOOBE.xaml.cs">
+      <DependentUpon>ListViewOOBE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE2.xaml.cs">
+      <DependentUpon>OOBE2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GridViewOOBE.xaml.cs">
+      <DependentUpon>GridViewOOBE.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhatsNew.xaml.cs">
@@ -133,7 +139,21 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\PowerMute.png" />
+    <Content Include="Assets\Images\ColorPicker.png" />
+    <Content Include="Assets\Images\FancyZones.png" />
+    <Content Include="Assets\Images\Icons\ColorPicker.png" />
+    <Content Include="Assets\Images\Icons\FancyZones.png" />
+    <Content Include="Assets\Images\Icons\ImageResizer.png" />
+    <Content Include="Assets\Images\Icons\KBM.png" />
+    <Content Include="Assets\Images\Icons\PowerRename.png" />
+    <Content Include="Assets\Images\ImageResizer.png" />
+    <Content Include="Assets\Images\KBM.png" />
+    <Content Include="Assets\Images\PowerLauncher.png" />
+    <Content Include="Assets\Images\PowerPreview.png" />
+    <Content Include="Assets\Images\PowerRename.png" />
+    <Content Include="Assets\Images\ShortcutGuide.png" />
+    <Content Include="Assets\Images\VideoConference.png" />
+    <Content Include="Assets\NewFeature.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -148,7 +168,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="OOBE.xaml">
+    <Page Include="ListViewOOBE.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OOBE2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GridViewOOBE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -160,6 +188,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.4.3</Version>

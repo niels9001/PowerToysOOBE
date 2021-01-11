@@ -12,9 +12,31 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <AcrylicBrush x:Key="BackgroundAcrylicBrush" BackgroundSource="HostBackdrop" TintColor="White" TintOpacity="0.7" FallbackColor="White"/>
+                    <x:Double x:Key="DropShadowBlurRadius">8</x:Double>
+                    <x:Double x:Key="DropShadowBlurRadiusOnHover">12</x:Double>
+                    <x:Double x:Key="DropShadowShadowOpacity">0.1</x:Double>
+                    <x:Double x:Key="DropShadowShadowOpacityOnHover">0.3</x:Double>
+                    <Color x:Key="DropShadowColor">#FF979797</Color>
+                    <SolidColorBrush x:Key="SecondaryBackgroundBrush"
+                                     Color="#FFf2f2f2" />
+
+                    <SolidColorBrush x:Key="PrimaryBackgroundBrush"
+                                     Color="#FFffffff" />
+                    
+
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Default">
                     <AcrylicBrush x:Key="BackgroundAcrylicBrush" BackgroundSource="HostBackdrop" TintColor="Black" TintOpacity="0.8" FallbackColor="Black"/>
+                    <x:Double x:Key="DropShadowBlurRadius">8</x:Double>
+                    <x:Double x:Key="DropShadowBlurRadiusOnHover">16</x:Double>
+                    <x:Double x:Key="DropShadowShadowOpacity">0.2</x:Double>
+                    <x:Double x:Key="DropShadowShadowOpacityOnHover">0.8</x:Double>
+                    <Color x:Key="DropShadowColor">#FF000000</Color>
+                    <SolidColorBrush x:Key="SecondaryBackgroundBrush"
+                                     Color="#FF1f1f1f" />
+
+                    <SolidColorBrush x:Key="PrimaryBackgroundBrush"
+                                     Color="#FF2b2b2b" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
           

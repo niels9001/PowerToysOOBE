@@ -1,12 +1,12 @@
-﻿<Page
-    x:Class="PowerToysOOBE.OOBE"
+﻿<Page x:Class="PowerToysOOBE.ListViewOOBE"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PowerToysOOBE"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Loaded="Page_Loaded"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      Background="{ThemeResource SecondaryBackgroundBrush}">
     <Page.Resources>
         <Style x:Key="FlipViewStyle1" TargetType="FlipView">
             <Setter Property="Background" Value="{ThemeResource FlipViewBackground}"/>
@@ -191,58 +191,168 @@
                 </Setter.Value>
             </Setter>
         </Style>
+      
+
+        <DataTemplate x:DataType="local:Module"
+                      x:Key="FluentDataTemplate">
+            <Grid Padding="4"
+                  Height="56">
+               
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Width="24"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Center"
+                               Source="{x:Bind FluentIcon}"
+                               HorizontalAlignment="Center" />
+                     
+                        <TextBlock Grid.Row="1"
+                                   TextWrapping="Wrap"
+                                   Text="{x:Bind Name}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   Margin="12,0,12,0"
+                                   FontSize="14" />
+                    </StackPanel>
+        
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="96"/>
-        </Grid.RowDefinitions>
-        <FlipView Style="{StaticResource FlipViewStyle1}" x:Name="FlipViewControl" Background="Transparent">
-            <StackPanel Orientation="Vertical">
-                <Image Height="200" Source="https://raw.githubusercontent.com/microsoft/PowerToys/master/doc/images/overview/PT%20hero%20image.png"/>
-                <TextBlock Text="Welcome to PowerToys" FontWeight="SemiBold" FontSize="32" Margin="32,32,32,16"/>
-                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="PowerToys is a collection of tools for power users that will transform the way you use Windows."/>
-                <TextBlock Margin="32,32,32,0" TextWrapping="Wrap" Opacity="0.8" Text="We want to run through a couple of settings to get your started."/>
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="460" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <TextBlock Text="Welcome to PowerToys"
+                       FontWeight="SemiBold"
+                       FontSize="24"
+                       Margin="32,32,32,16" />
+            <TextBlock Margin="32,0,32,0"
+                       TextWrapping="Wrap"
+                       Opacity="0.8"
+                       Text="PowerToys is a collection of tools that will transform the way you use Windows." />
+            <TextBlock Margin="32,8,32,0"
+                       TextWrapping="Wrap"
+                       Opacity="0.8"
+                       Text="Let's get you started!" />
+            <ListView x:Name="ModuleView"
+                      ItemTemplate="{StaticResource FluentDataTemplate}" Margin="12,36,0,0" ScrollViewer.HorizontalScrollMode="Enabled" ItemsSource="{x:Bind Modules}" SelectionMode="Single" SelectionChanged="GridView_SelectionChanged">
 
-            <StackPanel Orientation="Vertical">
-                <Image Stretch="UniformToFill" Height="200" Source="https://raw.githubusercontent.com/microsoft/PowerToys/master/doc/images/overview/Original/FancyZones.png"/>
-                <TextBlock Text="FancyZones" FontWeight="SemiBold" FontSize="32" Margin="32,32,32,16"/>
-                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="FancyZones is a window manager that makes it easy to create complex window layouts and quickly position windows into those layouts."/>
-                <HyperlinkButton Margin="32,0,32,0" Content="Learn more about FancyZones"/>
-                <TextBox Margin="32,32,32,0" Width="132" Header="Editor shortcut" HorizontalAlignment="Left" Text="Win + F"/>
-            </StackPanel>
+            </ListView>
+        </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <Image Stretch="UniformToFill" Height="200" Source="https://raw.githubusercontent.com/wiki/microsoft/PowerToys/images/Launcher/QuickStart.gif"/>
-                <TextBlock Text="PowerToys Run" FontWeight="SemiBold" FontSize="32" Margin="32,32,32,16"/>
-                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="Run helps you search and launch your app instantly with a simple Alt+Space and start typing."/>
-                <HyperlinkButton Margin="32,0,32,0" Content="Learn more about Run"/>
-                <TextBox Margin="32,32,32,0" Width="132" Header="Run shortcut" HorizontalAlignment="Left" Text="Alt + Run"/>
-            </StackPanel>
+        <Grid Background="{ThemeResource PrimaryBackgroundBrush}"
+              Grid.Column="1">
+            <FlipView Style="{StaticResource FlipViewStyle1}"
+                      x:Name="FlipViewControl" VerticalAlignment="Top"
+                      Background="Transparent">
 
-            <StackPanel Orientation="Vertical">
-                <Image Stretch="UniformToFill" Height="200" Source="https://raw.githubusercontent.com/wiki/microsoft/PowerToys/images/colorpicker/ColorPicker.gif"/>
-                <TextBlock Text="Color Picker" FontWeight="SemiBold" FontSize="32" Margin="32,32,32,16"/>
-                <TextBlock Margin="32,0,32,0" TextWrapping="Wrap" Opacity="0.8" Text="Color Picker is a simple and quick system-wide color picker with Win+Shift+C. Color Picker allows to pick colors from any currently running application and automatically copies the HEX or RGB values to your clipboard."/>
-                <HyperlinkButton Margin="32,0,32,0" Content="Learn more about Color Picker"/>
-                <TextBox Margin="32,32,32,0" Width="132" Header="Color Picker shortcut" HorizontalAlignment="Left" Text="Win + C"/>
-            </StackPanel>
-        </FlipView>
-
-        <Grid Grid.Row="1" Background="{ThemeResource BackgroundAcrylicBrush}" VerticalAlignment="Center">
-            <Button Margin="32" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{StaticResource TextBlockButtonStyle}">
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                    <TextBlock Text="&#xE115;" Margin="0,3,0,0" FontFamily="Segoe MDL2 Assets" />
-                    <TextBlock Text="Settings" />
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <Image Stretch="UniformToFill"
+                           Height="460"
+                           Source="https://raw.githubusercontent.com/wiki/microsoft/PowerToys/images/colorpicker/ColorPicking.gif" />
+                    <TextBlock Text="Color Picker"
+                               FontWeight="SemiBold"
+                               FontSize="32"
+                               Margin="32,32,32,16" />
+                    <TextBlock Margin="32,0,32,0"
+                               TextWrapping="Wrap"
+                               Opacity="0.8"
+                               Text="Color Picker is a simple and quick system-wide color picker with Win+Shift+C. Color Picker allows to pick colors from any currently running application and automatically copies the HEX or RGB values to your clipboard." />
+                    <HyperlinkButton Margin="32,0,32,0"
+                                     Content="Learn more about Color Picker" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="32,32,0,0"
+                                Spacing="4">
+                        <Button Content="Launch Color Picker"
+                              
+                                Style="{StaticResource AccentButtonStyle}" />
+                        <Button Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource TextBlockButtonStyle}">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="8">
+                                <TextBlock Text="&#xE115;"
+                                           Margin="0,3,0,0"
+                                           FontFamily="Segoe MDL2 Assets" />
+                                <TextBlock Text="Settings" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
-            </Button>
-            <StackPanel Spacing="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,32,0" HorizontalAlignment="Right" >
-                <Button x:Name="PreviousBtn" IsEnabled="False" FontFamily="Segoe MDL2 Assets" Height="36" Width="36" Content="&#xE09E;" Style="{StaticResource ButtonRevealStyle}" Click="PreviousBtn_Click"/>
-                <Button x:Name="NextBtn" FontFamily="Segoe MDL2 Assets" Height="36" Width="36" Content="&#xE09F;" Style="{StaticResource ButtonRevealStyle}" Click="NextBtn_Click"/>
-            </StackPanel>
-          
+
+                <StackPanel Orientation="Vertical">
+                    <Image Stretch="UniformToFill"
+                           Height="460"
+                           Source="https://user-images.githubusercontent.com/9866362/101410242-5b90a280-38df-11eb-834a-8365453b8429.gif" />
+                    <TextBlock Text="FancyZones"
+                               FontWeight="SemiBold"
+                               FontSize="32"
+                               Margin="32,32,32,16" />
+                    <TextBlock Margin="32,0,32,0"
+                               TextWrapping="Wrap"
+                               Opacity="0.8"
+                               Text="FancyZones is a window manager that makes it easy to create complex window layouts and quickly position windows into those layouts." />
+                    <HyperlinkButton Margin="32,0,32,0"
+                                     Content="Learn more about FancyZones" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="32,32,0,0"
+                                Spacing="4">
+                        <Button Content="Launch FancyZones"
+                             
+                                Style="{StaticResource AccentButtonStyle}" />
+                        <Button Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource TextBlockButtonStyle}">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="8">
+                                <TextBlock Text="&#xE115;"
+                                           Margin="0,3,0,0"
+                                           FontFamily="Segoe MDL2 Assets" />
+                                <TextBlock Text="Settings" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Image Stretch="UniformToFill"
+                           Height="460"
+                           Source="https://raw.githubusercontent.com/wiki/microsoft/PowerToys/images/Launcher/QuickStart.gif" />
+                    <TextBlock Text="PowerToys Run"
+                               FontWeight="SemiBold"
+                               FontSize="32"
+                               Margin="32,32,32,16" />
+                    <TextBlock Margin="32,0,32,0"
+                               TextWrapping="Wrap"
+                               Opacity="0.8"
+                               Text="Run helps you search and launch your app instantly with a simple Alt+Space and start typing." />
+                    <HyperlinkButton Margin="32,0,32,0"
+                                     Content="Learn more about Run" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="32,32,0,0"
+                                Spacing="4">
+                        <Button Content="Launch Run"
+                           
+                                Style="{StaticResource AccentButtonStyle}" />
+                        <Button Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource TextBlockButtonStyle}">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="8">
+                                <TextBlock Text="&#xE115;"
+                                           Margin="0,3,0,0"
+                                           FontFamily="Segoe MDL2 Assets" />
+                                <TextBlock Text="Settings" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </FlipView>
         </Grid>
     </Grid>
 </Page>
