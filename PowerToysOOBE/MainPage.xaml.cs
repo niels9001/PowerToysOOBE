@@ -23,10 +23,10 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PowerToysOOBE
 {
-    public sealed partial class ListViewOOBE : Page
+    public sealed partial class MainPage : Page
     {
         ObservableCollection<Module> Modules;
-        public ListViewOOBE()
+        public MainPage()
         {
             this.InitializeComponent();
 
@@ -43,24 +43,23 @@ namespace PowerToysOOBE
             Modules.Add(new Module() { Name = "Video Conference", IsNew = true, NavIndex = 1, Icon = "\uEC50", Image = "ms-appx:///Assets/Images/VideoConference.png", FluentIcon = "ms-appx:///Assets/Images/Icons/FancyZones.png" });
         }
 
-        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            FlipViewControl.SelectedIndex = FlipViewControl.SelectedIndex + 1;
+            NavigationViewItem selectedItem = args.SelectedItem as NavigationViewItem;
+            switch ((string)selectedItem.Tag)
+            {
+                case "ColorPicker": NavigationFrame.Navigate(typeof(ModulePages.ColorPicker)); break;
+                case "FancyZones": NavigationFrame.Navigate(typeof(ModulePages.FancyZones)); break;
+                case "Run": NavigationFrame.Navigate(typeof(ModulePages.Run)); break;
+                case "KBM": NavigationFrame.Navigate(typeof(ModulePages.ColorPicker)); break;
+                case "ImageResizer": NavigationFrame.Navigate(typeof(ModulePages.FancyZones)); break;
+                case "PowerRename": NavigationFrame.Navigate(typeof(ModulePages.Run)); break;
+            }
         }
 
-        private void PreviousBtn_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            FlipViewControl.SelectedIndex = FlipViewControl.SelectedIndex - 1;
-        }
-
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Module SelectedModule = (Module)ModuleView.SelectedItem;
-            FlipViewControl.SelectedIndex = SelectedModule.NavIndex;
+            NavigationView.SelectedItem = NavigationView.MenuItems[0];
         }
     }
 

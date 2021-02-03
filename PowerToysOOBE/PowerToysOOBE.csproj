@@ -119,13 +119,22 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListViewOOBE.xaml.cs">
-      <DependentUpon>ListViewOOBE.xaml</DependentUpon>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OOBE2.xaml.cs">
+    <Compile Include="ModulePages\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulePages\FancyZones.xaml.cs">
+      <DependentUpon>FancyZones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulePages\Run.xaml.cs">
+      <DependentUpon>Run.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OLD\OOBE2.xaml.cs">
       <DependentUpon>OOBE2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GridViewOOBE.xaml.cs">
+    <Compile Include="OLD\GridViewOOBE.xaml.cs">
       <DependentUpon>GridViewOOBE.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,15 +177,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ListViewOOBE.xaml">
+    <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OOBE2.xaml">
+    <Page Include="ModulePages\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulePages\FancyZones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulePages\Run.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OLD\OOBE2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="GridViewOOBE.xaml">
+    <Page Include="OLD\GridViewOOBE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -193,7 +214,7 @@
       <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.5.0</Version>
+      <Version>2.6.0-prerelease.210113001</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
